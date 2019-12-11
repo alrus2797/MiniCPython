@@ -9,10 +9,13 @@ class Type(Word):
         Word.__init__(self, s, tag)
         self.width = w
 
-    def numeric(self, p):
+    @staticmethod
+    def numeric(p):
         if p == Types.Char or p == Types.Int or p == Types.Float: return True
         else: return False
-    def max(self, p1, p2):
+    
+    @staticmethod
+    def max(p1, p2):
         if not self.numeric(p1) or not self.numeric(p2): return None
         elif p1 == Types.Float  or p2 == Types.Float: return Types.Float
         elif p1 == Types.Int    or p2 == Types.Int: return Types.Int
@@ -25,7 +28,7 @@ class Type(Word):
     
     # def toString(self):
     #     return f'[ {self.lexeme}, {self.tag},  {self.width} ]'
-class Types:
+class Types(Word):
     Int   = Type( "int",   Tag.BASIC, 4 );
     Float = Type( "float", Tag.BASIC, 8 );
     Char  = Type( "char",  Tag.BASIC, 1 );

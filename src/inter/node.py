@@ -23,4 +23,4 @@ class Node:
         print(f"L {i}: ", end="")
     
     def emit(self, s):
-        print(f"\ts" )
+        print(f"\t{s}" )
